@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/site-tanja-17/static/css/main.c3d71331.chunk.css",
+    "main.js": "/site-tanja-17/static/js/main.816a548a.chunk.js",
+    "main.js.map": "/site-tanja-17/static/js/main.816a548a.chunk.js.map",
+    "runtime-main.js": "/site-tanja-17/static/js/runtime-main.6778c9d2.js",
+    "runtime-main.js.map": "/site-tanja-17/static/js/runtime-main.6778c9d2.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/site-tanja-17/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.89e0b8d2.chunk.js": "/site-tanja-17/static/js/2.89e0b8d2.chunk.js",
+    "static/js/2.89e0b8d2.chunk.js.map": "/site-tanja-17/static/js/2.89e0b8d2.chunk.js.map",
+    "index.html": "/site-tanja-17/index.html",
+    "precache-manifest.815029852d9357f9bd0a2dfba358bd5c.js": "/site-tanja-17/precache-manifest.815029852d9357f9bd0a2dfba358bd5c.js",
+    "service-worker.js": "/site-tanja-17/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/site-tanja-17/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.c3d71331.chunk.css.map": "/site-tanja-17/static/css/main.c3d71331.chunk.css.map",
+    "static/js/2.89e0b8d2.chunk.js.LICENSE.txt": "/site-tanja-17/static/js/2.89e0b8d2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6778c9d2.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.89e0b8d2.chunk.js",
+    "static/css/main.c3d71331.chunk.css",
+    "static/js/main.816a548a.chunk.js"
+  ]
+}
