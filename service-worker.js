@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/site-tanja-17/precache-manifest.9f49370ede9527160d2ea2ba18b7f8e8.js"
+  "/site-tanja-17/precache-manifest.3f48bcbf8da0147d62d8c8209a4247ab.js"
 );
 
 self.addEventListener('message', (event) => {
