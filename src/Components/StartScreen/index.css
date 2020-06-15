@@ -1,3 +1,16 @@
 .row {
-    justify-content: center;
+  justify-content: center;
+}
+.menu-brand-item {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: #199d76;
+  display: block;
+  font-weight: 500;
+  font-size: 1.125rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.navbar-expand {
+  justify-content: center;
 }

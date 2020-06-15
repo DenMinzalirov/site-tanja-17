@@ -1,27 +1,57 @@
-import React from 'react';
-import { Container, Row } from 'react-bootstrap'
+import React from "react"; // , { useState }
+import { Container, Row, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-import ItemCard from '../ItemCard/ItemCard'
-import './index.css'
+import ItemCard from "../ItemCard/ItemCard";
+import "./index.css";
 
 const StartScreen = (props) => {
-    const { location: { pathname } } = props
-    // console.log(props)
-    return (
-        <Container fluid>
-            <h1>{pathname.slice(1) === '' ? 'Весь товар' : pathname.slice(1)}</h1>
-            <Row>
-                {Object.values(props.allBase).map((el) => {
-                    if (el.category === pathname.slice(1)) {
-                        return <ItemCard {...props} key={el.name} item={el} />
-                    }
-                    if (pathname.slice(1) === '') {
-                        return <ItemCard {...props} key={el.name} item={el} />
-                    }
-                })}
-            </Row>
-        </Container>
-    )
-}
+  // const [brand, setBrand] = useState("");
+  const {
+    location: { pathname },
+    allBase,
+  } = props;
+  // console.log(allBase);
+
+  const brandList = Object.keys(allBase)
+    .filter((el) => {
+      return allBase[el].brand;
+    })
+    .map((el) => {
+      return allBase[el].brand;
+    });
+  // console.log(brandList);
+  return (
+    <Container fluid>
+      <Navbar variant="light">
+        {brandList.map((el) => {
+          return (
+            <NavLink key={el} exact className="menu-brand-item" to={`/${el}`}>
+              {el}
+            </NavLink>
+          );
+        })}
+      </Navbar>
+      <h1>{pathname.slice(1) === "" ? "Все товары" : pathname.slice(1)}</h1>
+      <Row>
+        {
+          // eslint-disable-next-line array-callback-return
+          Object.values(props.allBase).map((el) => {
+            // console.log(el);
+            if (el.category === pathname.slice(1)) {
+              return <ItemCard {...props} key={el.name} item={el} />;
+            }
+            if (el.brand === pathname.slice(1)) {
+              return <ItemCard {...props} key={el.name} item={el} />;
+            }
+            if (pathname.slice(1) === "") {
+              return <ItemCard {...props} key={el.name} item={el} />;
+            }
+          })
+        }
+      </Row>
+    </Container>
+  );
+};
 
 export default StartScreen;

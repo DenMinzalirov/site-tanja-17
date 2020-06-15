@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap'
-import { checkAuthStateChanged } from '../../firebase/services'
+import React from "react";
+import { Container } from "react-bootstrap";
 
-import LogInForm from './LogInForm'
-import CreateItemScreen from './CreateItemScreen'
+import LogInForm from "./LogInForm";
+import CreateItemScreen from "./CreateItemScreen";
 
-const Account = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    useEffect(() => {
-        checkAuthStateChanged(setIsLoggedIn);
-    }, [])
-    // console.log('isLoggedIn', isLoggedIn)
+const Account = (props) => {
+  return (
+    <Container>
+      {props.isLoggedIn ? <CreateItemScreen allbase={props} /> : <LogInForm />}
+    </Container>
+  );
+};
 
-    return (
-        <Container>
-            {isLoggedIn ?
-                <CreateItemScreen /> :
-                <LogInForm />
-            }
-        </Container>
-    )
-}
-
-export default Account
+export default Account;
