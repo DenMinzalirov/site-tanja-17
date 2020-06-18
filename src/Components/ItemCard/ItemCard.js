@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Card, Button, Modal, InputGroup, FormControl } from "react-bootstrap";
+import { Card, Button, Modal } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import Formspree from "./formspree";
 
 import { tempImg } from "./img";
 import "./index.css";
@@ -79,17 +80,17 @@ const ItemCard = (props) => {
           <Modal.Title>
             Вы хотите купить {props.item.name}{" "}
             <a href="tel:+375295804093">
-              <p className="h2 text-right telephone mt-2">
-                Звоните: +37529-5804093
+              <p className="h2 text-right telephoneModal mt-2">
+                Звоните: +375(29)580-40-93
               </p>
             </a>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Или оставте свой номер телефона с вами свяжеться наш менеджер
+          Или оставте свой номер телефона с вами свяжется наш менеджер
         </Modal.Body>
         <Modal.Footer>
-          <InputGroup size="sm" className="mb-3">
+          {/* <InputGroup size="sm" className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-sm">
                 Ваш тел.:
@@ -99,13 +100,14 @@ const ItemCard = (props) => {
               aria-label="Small"
               aria-describedby="inputGroup-sizing-sm"
             />
-          </InputGroup>
-          <Button variant="secondary" onClick={handleClose}>
+          </InputGroup> */}
+          <Formspree />
+          {/* <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
             Save Changes
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </Card>

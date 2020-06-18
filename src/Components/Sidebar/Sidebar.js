@@ -88,7 +88,9 @@ class MySidebar extends Component {
             <div className="row">
               <div className="col-12 col-sm-6">
                 <a href="tel:+375295804093">
-                  <p className="h2 text-right telephone mt-2">+37529-5804093</p>
+                  <p className="h2 text-right telephone mt-2">
+                    +375(29)580-40-93
+                  </p>
                 </a>
               </div>
               <div className="col-12 col-sm-6">

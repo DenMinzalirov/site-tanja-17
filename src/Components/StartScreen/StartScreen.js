@@ -1,8 +1,9 @@
 import React from "react"; // , { useState }
-import { Container, Row, Navbar } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Container, Row } from "react-bootstrap";
+// import { NavLink } from "react-router-dom";
 
 import ItemCard from "../ItemCard/ItemCard";
+import BrandSwiper from "./BrandSwiper";
 import "./index.css";
 
 const StartScreen = (props) => {
@@ -20,18 +21,20 @@ const StartScreen = (props) => {
     .map((el) => {
       return allBase[el].brand;
     });
-  // console.log(brandList);
+
+  // console.log(Array.from(new Set(brandList)));
   return (
     <Container fluid>
-      <Navbar variant="light">
-        {brandList.map((el) => {
+      <BrandSwiper brandList={brandList} />
+      {/* <Navbar variant="light">
+        {Array.from(new Set(brandList)).map((el) => {
           return (
             <NavLink key={el} exact className="menu-brand-item" to={`/${el}`}>
               {el}
             </NavLink>
           );
         })}
-      </Navbar>
+      </Navbar> */}
       <h1>{pathname.slice(1) === "" ? "Все товары" : pathname.slice(1)}</h1>
       <Row>
         {

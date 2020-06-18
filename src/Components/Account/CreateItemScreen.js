@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { logOutUser } from "../../firebase/services";
 import FileBase64 from "react-file-base64";
-import EditorText from './EditorText'
-
+import EditorText from "./EditorText";
+import EditItem from "./EditItem";
 import "./index.css";
 import { setItem, delCategory, delItem } from "../../firebase/services";
 import { MDBDataTable } from "mdbreact";
@@ -31,8 +31,8 @@ const DelModal = (props) => {
               Удалить категорию {props.changeCategory} ?
             </Modal.Title>
           ) : (
-              <Modal.Title>Удалить товар {props.changeItem?.name} ?</Modal.Title>
-            )}
+            <Modal.Title>Удалить товар {props.changeItem?.name} ?</Modal.Title>
+          )}
           {/* <Modal.Title>Удалить категорию {props.changeCategory} ?</Modal.Title> */}
         </Modal.Header>
         {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
@@ -105,18 +105,18 @@ const ListCtegory = (props) => {
           <DelModal changeCategory={changeCategory} />
         </div>
       ) : (
-          <div className="logout-btn">
-            <Button
-              variant="primary"
-              color="primary"
-              onClick={() => {
-                setisShowMyOrders(true);
-              }}
-            >
-              Удалить категорию из списка со всем товаром
+        <div className="logout-btn">
+          <Button
+            variant="primary"
+            color="primary"
+            onClick={() => {
+              setisShowMyOrders(true);
+            }}
+          >
+            Удалить категорию из списка со всем товаром
           </Button>
-          </div>
-        )}
+        </div>
+      )}
     </div>
   );
 };
@@ -184,19 +184,19 @@ const ListItem = (props) => {
           <DelModal changeItem={changeItem} setAllBase={setAllBase} />
         </div>
       ) : (
-          <div className="logout-btn">
-            <Button
-              variant="primary"
-              // className={buttonOrder}
-              color="primary"
-              onClick={() => {
-                setisShowMyOrders(true);
-              }}
-            >
-              Удалить еденицу товара
+        <div className="logout-btn">
+          <Button
+            variant="primary"
+            // className={buttonOrder}
+            color="primary"
+            onClick={() => {
+              setisShowMyOrders(true);
+            }}
+          >
+            Удалить еденицу товара
           </Button>
-          </div>
-        )}
+        </div>
+      )}
     </div>
   );
 };
@@ -209,10 +209,12 @@ const CreateItemScreen = (props) => {
   const [imageUrl, setImageUrl] = useState("");
   const [allDiscription, setAllDiscription] = useState("");
   const [brand, setBrand] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const getFiles = (files) => {
     setImageUrl(files[0].base64);
   };
+
   return (
     <>
       <div className="logout-btn">
@@ -220,6 +222,7 @@ const CreateItemScreen = (props) => {
           LogOut(Выход)
         </Button>
       </div>
+      <EditItem allbase={props} />
       <ListCtegory allbase={props} />
       <ListItem allbase={props} />
       <Form>
@@ -272,21 +275,35 @@ const CreateItemScreen = (props) => {
             aria-label="With textarea"
           />
         </InputGroup> */}
+        <СheckModal showModal={{ showModal, setShowModal }} />
         <Button
           variant="primary"
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            // console.log(category, name, discription, price, 'click')
-            setItem(
-              category,
-              name,
-              discription,
-              price,
-              imageUrl,
-              allDiscription,
+            if (
+              category &&
+              name &&
+              discription &&
+              price &&
+              imageUrl &&
+              allDiscription &&
               brand
-            );
+            ) {
+              setItem(
+                category,
+                name,
+                discription,
+                price,
+                imageUrl,
+                allDiscription,
+                brand
+              );
+            } else {
+              setShowModal(true);
+              console.log("не все заполнено");
+            }
+
             // setName('')
           }}
         >
@@ -308,6 +325,38 @@ const CreateItemScreen = (props) => {
       </div>
 
       {/* <AddImg /> */}
+    </>
+  );
+};
+
+export const СheckModal = (props) => {
+  // console.log('СheckModal', props.showModal)
+  const {
+    showModal: { setShowModal, showModal },
+  } = props;
+  // const [show, setShow] = useState(showModal);
+
+  const handleClose = () => setShowModal(false);
+  // const handleShow = () => setShow(true);
+
+  // useEffect(() => {
+  //   if (props.changeCategory || props.changeItem) {
+  //     handleShow();
+  //   }
+  // }, [props]);
+
+  return (
+    <>
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Не все поля заполнены</Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

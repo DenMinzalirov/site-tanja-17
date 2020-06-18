@@ -190,7 +190,7 @@ export const delItem = (item) => {
         console.log(doc.id, " => ", doc.data());
       });
     });
-  document.location.reload(true);
+  // document.location.reload(true);
   //   firebase
   //     .firestore()
   //     .collection(item.category)

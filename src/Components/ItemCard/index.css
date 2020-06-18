@@ -8,3 +8,8 @@
 .btn {
   margin: 0px 10px;
 }
+.telephoneModal {
+  width: 100%;
+  color: black;
+  font-size: inherit;
+}

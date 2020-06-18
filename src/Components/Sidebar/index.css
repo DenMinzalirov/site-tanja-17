@@ -6,18 +6,26 @@
   font-family: Kindly;
 } */
 .telephone {
+  width: 100%;
+  /* background-image: url(../../assets/img/icons8-мтс-50.png); */
+  background-size: 10%;
+  background-position-x: 55px;
+  background-repeat: no-repeat;
+  /* color: blue; */
+  margin-right: -16px;
   color: black;
   font-weight: bold;
-  font-family: Kindly;
-  letter-spacing: 5px;
+  /* font-family: Kindly; */
+  /* letter-spacing: 5px; */
 }
 
 /* MENU STYLES */
 .drawer-wrap {
   overflow: hidden;
   position: relative;
-  background-image: url(../../assets/img/bg.png);
-  background-color: #007bff;
+  /* background-image: url(../../assets/img/bg.png); */
+  background-size: 10%;
+  background-color: #99ede5;
 }
 
 .menu-header {
@@ -138,7 +146,27 @@
     right: 45px;
   }
 }
+@media (min-width: 750px) {
+  .telephone {
+    background-position-x: 46px;
+  }
+}
+@media (min-width: 1010px) {
+  .telephone {
+    background-size: 9%;
+    background-position-x: 147px;
+  }
+}
+@media (min-width: 1430px) {
+  .telephone {
+    background-size: 7%;
+    background-position-x: 245px;
+  }
+}
 @media (max-width: 576px) {
+  .telephone {
+    width: 274px;
+  }
   .img-logo {
     top: -21px;
   }
@@ -155,6 +183,8 @@
 }
 .logo-text {
   font-family: Kindly;
+  font-weight: bolder;
+  color: blue;
 }
 .content-veil {
   position: fixed;

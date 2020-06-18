@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
+import {
+  EditorState,
+  convertToRaw,
+  ContentState,
+  convertFromHTML,
+} from "draft-js";
 import draftToHtml from "draftjs-to-html";
 
 import {
@@ -23,10 +28,26 @@ const styles = {
 };
 
 const EditorText = (props) => {
-  console.log(props.setAllDiscription);
-  const { setAllDiscription } = props;
+  useEffect(() => {
+    sendMail();
+  });
+  // console.log(props.setAllDiscription);
+  const { setAllDiscription, allDiscription = "" } = props;
+
+  // const html2 = `<p>Lorem ipsum <b>dolor</b> sit amet, <i>consectetuer adipiscing elit.</i></p>
+  // <p>Aenean commodo ligula eget dolor. <b><i>Aenean massa.</i></b></p>`;
+
+  const blocksFromHTML = convertFromHTML(allDiscription);
+  const content = ContentState.createFromBlockArray(
+    blocksFromHTML.contentBlocks,
+    blocksFromHTML.entityMap
+  );
+
   const [state, setState] = useState({
-    editorState: EditorState.createEmpty(),
+    editorState: EditorState.createWithContent(
+      content
+      // ContentState.createFromText(allDiscription)
+    ),
   });
   const [rend, setRend] = useState("Проверяемый текст");
   const onEditorStateChange = (editorState) => {
@@ -43,6 +64,7 @@ const EditorText = (props) => {
     setRend(html);
     setAllDiscription(html);
   };
+
   return (
     <div className="main-box">
       <h2>Подробное описание</h2>
