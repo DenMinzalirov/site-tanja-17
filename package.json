@@ -30,7 +30,7 @@
     "react-scripts": "3.4.1",
     "react-side-bar": "^1.0.4",
     "reactfire": "^2.0.3",
-    "swiper": "^5.4.3"
+    "swiper": "^6.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
